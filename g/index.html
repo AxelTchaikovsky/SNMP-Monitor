@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+ 
+  <script src="/js/Chart.min.js"></script>
+  <!--<script src="js/utils.js"></script>-->	
+  <script type="text/javascript" src="/eel.js"></script>
+	
+</head>
+	
+<body>
+
+	<div class="navbar-fixed">
+		<nav class="nav-wrapper indigo">
+		  <div class="container">
+			<a href="#" class="brand-logo">SNMP Moniter</a>
+			<a href="#" class="sidenav-trigger" data-target="mobile-links">
+			  <i class="material-icons">menu</i>
+			</a>
+			<ul class="right hide-on-med-and-down">
+			  <li><a href="">Home</a></li>
+			  <li><a href="#cpu">CPU</a></li>
+			  <li><a href="#memory">Memory</a></li>
+			  <li><a href="#disk">Disk</a></li>
+			  <li><a href="#network">Network</a></li>
+			  <li><a href="" class="btn white indigo-text">by Zixuan Li</a></li>
+			</ul>
+		  </div>
+		</nav>
+	  </div>
+	
+	  <ul class="sidenav" id="mobile-links">
+		<li><a href="">Home</a></li>
+		<li><a href="#cpu">CPU</a></li>
+		<li><a href="#memory">Memory</a></li>
+		<li><a href="#disk">Disk</a></li>
+		<li><a href="#network">Network</a></li>
+	  </ul>
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+	  
+	<div class="row">
+	  <div class="col s2">
+	    <h2 class="pink-text" id="cpu">CPU</h2>
+	  </div>
+    </div>
+    <div class="row">
+	  <div class="col s2">
+	    <h5>Usage:</h5>
+	  </div>
+	  <div class="col s1"><h5 id="cpunum" class="blue-grey-text">0</h5></div>
+	  <div class="col s1"><h5 class="blue-grey-text">%</h5></div>
+	  <div class="col s2">
+	    <h5>Threshold:</h5>
+	  </div>
+	  <div class="col s6">
+	    <form action="#">
+    	  <p class="range-field">
+      		<input type="range" id="cputhre" min="0" max="100" />
+   		  </p>
+  	    </form>
+	  </div>  
+	</div>
+	<canvas id="cpuchart"></canvas>  
+	
+	  
+	<div class="row">
+	  <div class="col s2">
+	    <h2 class="pink-text" id="memory">Memory</h2>
+	  </div>
+    </div>
+    <div class="row">
+	  <div class="col s2">
+	    <h5>Usage:</h5>
+	  </div>
+		<div class="col s1"><h5 class="blue-grey-text" id="memnum">0</h5></div>
+		<div class="col s1"><h5 class="blue-grey-text">%</h5></div>
+	  <div class="col s2">
+	    <h5>Threshold:</h5>
+	  </div>
+	  <div class="col s6">
+	    <form action="#">
+    	  <p class="range-field">
+      		<input type="range" id="memthre" min="0" max="100" />
+   		  </p>
+  	    </form>
+	  </div>  
+	</div>
+	<canvas id="memchart"></canvas> 
+	
+	
+	<div class="row">
+	  <div class="col s2">
+	    <h2 class="pink-text" id="disk">Disk</h2>
+	  </div>
+    </div>
+		<table>
+			<thead>
+				<tr>
+						<th>Disk Number</th>
+						<th>Total Size</th>
+						<th>Available space</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Disk1</td>
+					<td id='total1'>0</td>
+					<td id='use1'>0</td>
+				</tr>
+				<tr>
+					<td>Disk2</td>
+					<td id='total2'>0</td>
+					<td id='use2'>0</td>
+				</tr>
+				<tr>
+					<td>Disk3</td>
+					<td id='total3'>0</td>
+					<td id='use3'>0</td>
+				</tr>
+				<tr>
+					<td>Disk4</td>
+					<td id='total4'>0</td>
+					<td id='use4'>0</td>
+				</tr>
+				<tr>
+					<td>Disk5</td>
+					<td id='total5'>0</td>
+					<td id='use5'>0</td>
+				</tr>
+				<tr>
+					<td>Disk6</td>
+					<td id='total6'>0</td>
+					<td id='use6'>0</td>
+				</tr>
+				<tr>
+					<td>Disk7</td>
+					<td id='total7'>0</td>
+					<td id='use7'>0</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	<div class="row">
+	  <div class="col s2">
+	    <h2 class="pink-text" id="network">Network</h2>
+	  </div>
+    </div>
+    <div class="row">
+	  <div class="col s2"><h5>In(KB/s):</h5></div>
+		<div class="col s4"><h5 class="blue-grey-text" id="netin">0</h5></div>
+
+		<div class="col s2"><h5>Out(KB/s):</h5></div>
+		<div class="col s4"><h5 class="blue-grey-text" id="netout">0</h5></div>
+
+	</div>
+	<canvas id="netchart"></canvas> 
+	<p></p> 
+	<p></p> 
+	<p></p> 
+</div>
+</div>
+
+  <!-- footer -->
+  <footer class="page-footer grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5>About SNMP Moniter</h5>
+          <p>Incorporated with net-snmp to a html-based GUI, the software is based on python and can moniter as well as intuitively depic the CPU, memory, disk and network status of the desired agent.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/AxelTchaikovsky">Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright grey darken-4">
+      <div class="container center-align">&copy; 2020 Zixuan Li</div>
+    </div>
+  </footer>
+<!--  Scripts-->
+  <script src="js/cpu.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+  </script>
+
+  </body>
+</html>
